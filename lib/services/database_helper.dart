@@ -21,7 +21,7 @@ Future<TodoModel> addTodo({TodoModel? todo}) async {
 
   //Insert data into the "todo" table; insert takes a map whhich in this case our Todo model returns
   db.insert("todo", todo!.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace); 
+      conflictAlgorithm: ConflictAlgorithm.replace);
   print(todo);
   return todo;
 }
@@ -36,7 +36,7 @@ Future<TodoModel> updateToDo({List? id, TodoModel? todo}) async {
 //Delete Todo - delete todo requires just a List [id]
 Future deleteToDo({List? id}) async {
   final db = await todoDatabase();
-  db.delete("todo");
+  db.delete("todo", where: "id =?", whereArgs: id);
 }
 
 //Read Todo - Fetches content out of the Database Table
