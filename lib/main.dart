@@ -1,82 +1,6 @@
-// import 'package:flutter/material.dart';
-
-// void main() {
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Flutter Demo',
-//       theme: ThemeData(
-
-//         primarySwatch: Colors.blue,
-//       ),
-//       home: const MyHomePage(title: 'Flutter Demo Home Page'),
-//     );
-//   }
-// }
-
-// class MyHomePage extends StatefulWidget {
-//   const MyHomePage({super.key, required this.title});
-
-//   final String title;
-
-//   @override
-//   State<MyHomePage> createState() => _MyHomePageState();
-// }
-
-// class _MyHomePageState extends State<MyHomePage> {
-//   int _counter = 0;
-
-//   void _incrementCounter() {
-//     setState(() {
-
-//       _counter++;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-
-//     return Scaffold(
-//       appBar: AppBar(
-
-//         title: Text(widget.title),
-//       ),
-//       body: Center(
-
-//         child: Column(
-
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: <Widget>[
-//             const Text(
-//               'You have pushed the button this many times:',
-//             ),
-//             Text(
-//               '$_counter',
-//               style: Theme.of(context).textTheme.headline4,
-//             ),
-//           ],
-//         ),
-//       ),
-//       floatingActionButton: FloatingActionButton(
-//         onPressed: _incrementCounter,
-//         tooltip: 'Increment',
-//         child: const Icon(Icons.add),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:db__sqflite/models/todo_models.dart';
 import 'package:db__sqflite/services/database_helper.dart';
-// import 'package:db_sqflite_/model/todo_Model.dart';
-// import 'package:db_sqflite_/services/database_helper.dart';
 
 void main() {
   runApp(const MyApp());
@@ -107,7 +31,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  //Textfotmfied controller
+  //Textformfied controller
   final TextEditingController _controller = TextEditingController();
 
   @override
@@ -174,21 +98,15 @@ class _MyHomePageState extends State<MyHomePage> {
           child: FutureBuilder(
             future: readToDo(),
             builder: (context, snapshot) {
-              // final data = snapshot.data!;
-              // String? data = snapshot.data!;
-              // print(data);
-
               if (snapshot.hasData) {
                 return ListView.builder(
                   itemCount: snapshot.data.length,
                   itemBuilder: (context, index) {
                     final data = snapshot.data[index];
-                    //print(data);
                     return Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: ListTile(
                         tileColor: const Color.fromARGB(255, 211, 210, 210),
-                        // shape:
                         title: Text(
                           data["todo"].toString(),
                         ), //"todo" is the name of the database table
@@ -202,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               (value) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
-                                    content: Text("Task  Deleted"),
+                                    content: Text("Todo Deleted"),
                                   ),
                                 );
                                 //setState(() {}); //SetState Would also work here
@@ -216,31 +134,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 );
               } else {
-                return const Text("Please Add Todo");
+                return const Center(child: Text("Please Add Todo"));
               }
             },
           ),
         ),
       ),
-      // body: Center(
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: <Widget>[
-      //       const Text(
-      //         'You have pushed the button this many times:',
-      //       ),
-      //       Text(
-      //         '$_counter',
-      //         style: Theme.of(context).textTheme.headline4,
-      //       ),
-      //     ],
-      //   ),
-      // ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _incrementCounter,
-      //   tooltip: 'Increment',
-      //   child: const Icon(Icons.add),
-      // ),
     );
   }
 }

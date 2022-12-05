@@ -22,7 +22,7 @@ Future<TodoModel> addTodo({TodoModel? todo}) async {
   //Insert data into the "todo" table; insert takes a map whhich in this case our Todo model returns
   db.insert("todo", todo!.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace);
-  print(todo);
+  //print(todo);
   return todo;
 }
 
