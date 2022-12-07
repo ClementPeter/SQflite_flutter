@@ -48,6 +48,6 @@ Demo APP store data realtime using SQflite Database
 
 | Name                                                    | Usage                                               |
 | ------------------------------------------------------- | --------------------------------------------------- |
-| [**Path**(https://pub.dev/packages/path)    | Getting Database file Path            |
+| [**Path**](https://pub.dev/packages/path)    | Getting Database file Path            |
 | [**SQflite**](https://pub.dev/packages/sqflite)    | Create Database to store Data in App  |
 
