@@ -1,12 +1,15 @@
-import 'package:db__sqflite/models/todo_models.dart';
+import 'package:db__sqflite/todoDB/models/todo_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 //Create the sqflite database
 Future<Database> todoDatabase() async {
   return openDatabase(
-    join(await getDatabasesPath(),
-        "flutter_todo.db"), //Auto get the path the database storage and add our file
+    join(
+      await getDatabasesPath(),
+      "flutter_todo.db",
+    ), //Auto get the path the database storage and add our file
+    //create the database table
     onCreate: (db, version) {
       return db.execute(
           'CREATE TABLE todo (id INTEGER PRIMARY KEY, todo TEXT)'); //specify the name of the database table and parameters it contains; parameters depend on model class
@@ -17,6 +20,7 @@ Future<Database> todoDatabase() async {
 
 //Add Todo to Databse
 Future<TodoModel> addTodo({TodoModel? todo}) async {
+   //reference to the database to access it.
   final db = await todoDatabase();
 
   //Insert data into the "todo" table; insert takes a map whhich in this case our Todo model returns
