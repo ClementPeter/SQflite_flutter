@@ -9,7 +9,7 @@
 // void main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
 
-// //WidgetsFlutterBinding.ensureInitialized();
+
 
 //   DogModelDataBase() async {
 //     //open the database with "openDatabase" function

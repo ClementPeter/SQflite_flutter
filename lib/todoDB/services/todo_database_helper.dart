@@ -20,7 +20,7 @@ Future<Database> todoDatabase() async {
 
 //Add Todo to Databse
 Future<TodoModel> addTodo({TodoModel? todo}) async {
-   //reference to the database to access it.
+  //reference to the database to access it.
   final db = await todoDatabase();
 
   //Insert data into the "todo" table; insert takes a map whhich in this case our Todo model returns
@@ -48,3 +48,9 @@ Future readToDo() async {
   final db = await todoDatabase();
   return db.query("todo");
 }
+
+// //OR
+// Future<List<Map<String, Object?>>> readToDo() async {
+//   final db = await todoDatabase();
+//   return db.query("todo");
+// }
